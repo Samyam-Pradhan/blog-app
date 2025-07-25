@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::middleware(['auth','verified'])->group(function () {
+    Route::resource("note", PostController::class);  //short hand property
 });
 
 Route::get('/dashboard', function () {
