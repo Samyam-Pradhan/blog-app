@@ -20,7 +20,7 @@ class PostFactory extends Factory
             'title' => fake()->sentence(),
             'body' => fake()->realText(2000),
             'status' => fake()->randomElement(['draft', 'published']),
-            'user_id' => \App\Models\User::factory(),
+            'user_id' => 1
         ];
     }
 }
