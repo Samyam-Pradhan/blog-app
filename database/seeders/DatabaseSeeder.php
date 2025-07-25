@@ -16,8 +16,10 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
 
         User::factory()->create([
+            'id' => 1, // make sure this ID matches the one in PostFactory
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => bcrypt('test123'),
         ]);
     }
 }
