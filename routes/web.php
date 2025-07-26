@@ -4,17 +4,16 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::redirect("/dashborad","/posts")->name('dashboard');
+
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::middleware(['auth','verified'])->group(function () {
-    Route::resource("note", PostController::class);  //short hand property
+    Route::resource("posts", PostController::class); //short hand property
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
